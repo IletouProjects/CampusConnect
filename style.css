@@ -192,3 +192,51 @@ CSS appliqué au block Box Model
     background-color: #bae6fd;
     box-shadow: 0 10px 25px rgba(2, 132, 199, 0.25);
 }
+
+
+/* Section des services */
+.services-section {
+    margin: 40px 0;
+}
+
+/* Conteneur Flexbox */
+.cards-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+}
+
+/* Style commun des cartes */
+.card {
+    flex: 1;
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #ddd;
+    background-color: white;
+}
+
+/* Carte 1 */
+.card-annonces {
+    border-color: #0284c7;
+    background-color: #e0f2fe;
+}
+
+/* Carte 2 */
+.card-ressources {
+    border-color: #16a34a;
+    background-color: #dcfce7;
+}
+
+/* Carte 3 */
+.card-opportunites {
+    border-color: #7c3aed;
+    background-color: #ede9fe;
+}
+
+/* Bonus responsive */
+@media (max-width: 768px) {
+    .cards-container {
+        flex-direction: column;
+    }
+}

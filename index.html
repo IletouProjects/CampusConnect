@@ -417,6 +417,527 @@
         </div>
       </section>
 
+      <!-- Section galerie filtrable -->
+      <section id="gallery" class="bg-white px-6 py-20">
+        <div class="max-w-7xl mx-auto">
+          <!-- En-tête de section -->
+          <div class="text-center max-w-2xl mx-auto mb-12">
+            <p
+              class="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-3"
+            >
+              Galerie
+            </p>
+
+            <h2
+              class="text-3xl md:text-4xl font-bold tracking-tight text-slate-950 mb-4"
+            >
+              Explorez les contenus de CampusConnect
+            </h2>
+
+            <p class="text-lg text-gray-600">
+              Une sélection de contenus organisés pour mieux suivre les
+              annonces, ressources et opportunités importantes du campus.
+            </p>
+          </div>
+
+          <!-- Boutons de filtre -->
+          <div class="flex flex-wrap justify-center gap-3 mb-12">
+            <button
+              type="button"
+              class="filter-btn bg-slate-900 text-white px-5 py-3 rounded-xl font-semibold transition duration-300 hover:bg-slate-800"
+              data-filter="all"
+            >
+              Tout
+            </button>
+
+            <button
+              type="button"
+              class="filter-btn bg-slate-100 text-slate-700 px-5 py-3 rounded-xl font-semibold transition duration-300 hover:bg-slate-900 hover:text-white"
+              data-filter="annonces"
+            >
+              Annonces
+            </button>
+
+            <button
+              type="button"
+              class="filter-btn bg-slate-100 text-slate-700 px-5 py-3 rounded-xl font-semibold transition duration-300 hover:bg-slate-900 hover:text-white"
+              data-filter="ressources"
+            >
+              Ressources
+            </button>
+
+            <button
+              type="button"
+              class="filter-btn bg-slate-100 text-slate-700 px-5 py-3 rounded-xl font-semibold transition duration-300 hover:bg-slate-900 hover:text-white"
+              data-filter="opportunites"
+            >
+              Opportunités
+            </button>
+          </div>
+
+          <!-- Grille de contenus -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Élément 1 -->
+            <article
+              class="gallery-item group bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:scale-105 transition duration-300 cursor-pointer"
+              data-category="annonces"
+              data-title="Annonce de rentrée"
+              data-type="Annonce"
+              data-date="12 septembre 2026"
+              data-public="Tous les étudiants"
+              data-status="Information prioritaire"
+              data-objective="Aider les étudiants à bien préparer leur rentrée universitaire."
+              data-description="Cette annonce regroupe les informations essentielles liées à la rentrée universitaire : dates importantes, démarches administratives, documents à prévoir et recommandations pratiques."
+              data-details="La rentrée universitaire est une période où les étudiants ont besoin d’informations claires, fiables et facilement accessibles. Cette publication permet de centraliser les consignes importantes, de réduire les oublis et d’éviter la dispersion des messages dans plusieurs groupes. Elle peut également orienter les nouveaux étudiants vers les services utiles du campus."
+              data-image="https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+            >
+              <div class="relative">
+                <img
+                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+                  alt="Étudiants réunis autour d'un ordinateur"
+                  class="w-full h-48 object-cover"
+                />
+
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-slate-950/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-300"
+                ></div>
+              </div>
+
+              <div class="p-6">
+                <span
+                  class="inline-flex items-center rounded-full bg-slate-100 text-slate-700 px-3 py-1 text-xs font-semibold uppercase tracking-wide"
+                >
+                  Annonce
+                </span>
+
+                <h3 class="text-xl font-bold text-slate-900 mt-4 mb-3">
+                  Annonce de rentrée
+                </h3>
+
+                <p class="text-gray-600 line-clamp-2 mb-5">
+                  Les informations essentielles pour bien commencer l’année
+                  universitaire : dates, documents, démarches et consignes
+                  importantes.
+                </p>
+
+                <div
+                  class="flex items-center justify-between pt-4 border-t border-slate-100"
+                >
+                  <span class="text-sm text-slate-500">
+                    12 septembre 2026
+                  </span>
+
+                  <span
+                    class="text-sm font-semibold text-slate-900 group-hover:underline"
+                  >
+                    Voir détails
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Élément 2 -->
+            <article
+              class="gallery-item group bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:scale-105 transition duration-300 cursor-pointer"
+              data-category="ressources"
+              data-title="Supports de cours"
+              data-type="Ressource"
+              data-date="Disponible en continu"
+              data-public="Étudiants et enseignants"
+              data-status="Ressource active"
+              data-objective="Faciliter l’accès aux supports pédagogiques."
+              data-description="Cette ressource regroupe les supports de cours, documents PDF, liens utiles et contenus partagés par les enseignants."
+              data-details="Les supports de cours sont souvent dispersés entre plusieurs canaux : groupes de discussion, mails, messages privés ou plateformes différentes. Cette rubrique permet de retrouver plus facilement les documents utiles, d’améliorer l’organisation personnelle des étudiants et de rendre l’apprentissage plus fluide."
+              data-image="https://images.unsplash.com/photo-1516321318423-f06f85e504b3"
+            >
+              <div class="relative">
+                <img
+                  src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3"
+                  alt="Ordinateur affichant une interface de travail"
+                  class="w-full h-48 object-cover"
+                />
+
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-slate-950/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-300"
+                ></div>
+              </div>
+
+              <div class="p-6">
+                <span
+                  class="inline-flex items-center rounded-full bg-stone-100 text-stone-700 px-3 py-1 text-xs font-semibold uppercase tracking-wide"
+                >
+                  Ressource
+                </span>
+
+                <h3 class="text-xl font-bold text-slate-900 mt-4 mb-3">
+                  Supports de cours
+                </h3>
+
+                <p class="text-gray-600 line-clamp-2 mb-5">
+                  Accès rapide aux documents, supports PDF et liens utiles pour
+                  mieux suivre les cours.
+                </p>
+
+                <div
+                  class="flex items-center justify-between pt-4 border-t border-slate-100"
+                >
+                  <span class="text-sm text-slate-500"> Disponible </span>
+
+                  <span
+                    class="text-sm font-semibold text-slate-900 group-hover:underline"
+                  >
+                    Voir détails
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Élément 3 -->
+            <article
+              class="gallery-item group bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:scale-105 transition duration-300 cursor-pointer"
+              data-category="opportunites"
+              data-title="Stage académique"
+              data-type="Opportunité"
+              data-date="Candidature ouverte"
+              data-public="Étudiants en fin de cycle"
+              data-status="À consulter rapidement"
+              data-objective="Aider les étudiants à identifier des opportunités professionnelles."
+              data-description="Une opportunité de stage destinée aux étudiants qui souhaitent découvrir le monde professionnel et développer leur expérience."
+              data-details="Le stage académique représente une étape importante dans le parcours d’un étudiant. Cette publication permet de présenter les conditions de candidature, les profils concernés, les documents à préparer et les délais à respecter. Elle aide également les étudiants à mieux anticiper leur insertion professionnelle."
+              data-image="https://images.unsplash.com/photo-1556761175-b413da4baf72"
+            >
+              <div class="relative">
+                <img
+                  src="https://images.unsplash.com/photo-1556761175-b413da4baf72"
+                  alt="Jeunes professionnels en réunion"
+                  class="w-full h-48 object-cover"
+                />
+
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-slate-950/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-300"
+                ></div>
+              </div>
+
+              <div class="p-6">
+                <span
+                  class="inline-flex items-center rounded-full bg-zinc-100 text-zinc-700 px-3 py-1 text-xs font-semibold uppercase tracking-wide"
+                >
+                  Opportunité
+                </span>
+
+                <h3 class="text-xl font-bold text-slate-900 mt-4 mb-3">
+                  Stage académique
+                </h3>
+
+                <p class="text-gray-600 line-clamp-2 mb-5">
+                  Une occasion pour les étudiants de découvrir le monde
+                  professionnel et de renforcer leur expérience.
+                </p>
+
+                <div
+                  class="flex items-center justify-between pt-4 border-t border-slate-100"
+                >
+                  <span class="text-sm text-slate-500"> Ouvert </span>
+
+                  <span
+                    class="text-sm font-semibold text-slate-900 group-hover:underline"
+                  >
+                    Voir détails
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Élément 4 -->
+            <article
+              class="gallery-item group bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:scale-105 transition duration-300 cursor-pointer"
+              data-category="annonces"
+              data-title="Réunion de département"
+              data-type="Annonce"
+              data-date="18 septembre 2026"
+              data-public="Étudiants du département"
+              data-status="Présence recommandée"
+              data-objective="Informer les étudiants sur une réunion académique importante."
+              data-description="Une annonce pour informer les étudiants d’une réunion organisée par leur département autour des activités académiques."
+              data-details="Les réunions de département permettent de transmettre des informations importantes sur l’organisation des cours, les évaluations, les changements de programme et les activités prévues. En centralisant cette annonce, CampusConnect réduit les risques de mauvaise communication et permet à chaque étudiant concerné de retrouver les informations au bon endroit."
+              data-image="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4"
+            >
+              <div class="relative">
+                <img
+                  src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4"
+                  alt="Groupe de personnes en réunion"
+                  class="w-full h-48 object-cover"
+                />
+
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-slate-950/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-300"
+                ></div>
+              </div>
+
+              <div class="p-6">
+                <span
+                  class="inline-flex items-center rounded-full bg-slate-100 text-slate-700 px-3 py-1 text-xs font-semibold uppercase tracking-wide"
+                >
+                  Annonce
+                </span>
+
+                <h3 class="text-xl font-bold text-slate-900 mt-4 mb-3">
+                  Réunion de département
+                </h3>
+
+                <p class="text-gray-600 line-clamp-2 mb-5">
+                  Une information utile pour suivre les décisions et activités
+                  importantes du département.
+                </p>
+
+                <div
+                  class="flex items-center justify-between pt-4 border-t border-slate-100"
+                >
+                  <span class="text-sm text-slate-500"> 18 septembre </span>
+
+                  <span
+                    class="text-sm font-semibold text-slate-900 group-hover:underline"
+                  >
+                    Voir détails
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Élément 5 -->
+            <article
+              class="gallery-item group bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:scale-105 transition duration-300 cursor-pointer"
+              data-category="ressources"
+              data-title="Bibliothèque numérique"
+              data-type="Ressource"
+              data-date="Accès permanent"
+              data-public="Toute la communauté étudiante"
+              data-status="Ressource consultable"
+              data-objective="Mettre à disposition des contenus pédagogiques dans un espace unique."
+              data-description="Une ressource permettant aux étudiants d’accéder à des documents, livres, supports et liens pédagogiques depuis un seul espace."
+              data-details="La bibliothèque numérique permet de mieux organiser l’accès aux contenus d’apprentissage. Elle peut regrouper des livres numériques, notes de cours, liens externes, documents de révision et ressources recommandées. Son objectif est de rendre l’information pédagogique plus accessible et moins dispersée."
+              data-image="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+            >
+              <div class="relative">
+                <img
+                  src="https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+                  alt="Étudiants travaillant avec des ordinateurs"
+                  class="w-full h-48 object-cover"
+                />
+
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-slate-950/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-300"
+                ></div>
+              </div>
+
+              <div class="p-6">
+                <span
+                  class="inline-flex items-center rounded-full bg-stone-100 text-stone-700 px-3 py-1 text-xs font-semibold uppercase tracking-wide"
+                >
+                  Ressource
+                </span>
+
+                <h3 class="text-xl font-bold text-slate-900 mt-4 mb-3">
+                  Bibliothèque numérique
+                </h3>
+
+                <p class="text-gray-600 line-clamp-2 mb-5">
+                  Un espace pour retrouver des contenus pédagogiques et mieux
+                  organiser son apprentissage.
+                </p>
+
+                <div
+                  class="flex items-center justify-between pt-4 border-t border-slate-100"
+                >
+                  <span class="text-sm text-slate-500"> Permanent </span>
+
+                  <span
+                    class="text-sm font-semibold text-slate-900 group-hover:underline"
+                  >
+                    Voir détails
+                  </span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Élément 6 -->
+            <article
+              class="gallery-item group bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:scale-105 transition duration-300 cursor-pointer"
+              data-category="opportunites"
+              data-title="Formation pratique"
+              data-type="Opportunité"
+              data-date="Session à venir"
+              data-public="Étudiants intéressés"
+              data-status="Inscription recommandée"
+              data-objective="Renforcer les compétences pratiques des étudiants."
+              data-description="Une formation destinée aux étudiants pour renforcer leurs compétences, découvrir de nouvelles pratiques et mieux préparer leur insertion professionnelle."
+              data-details="Les formations pratiques permettent aux étudiants de développer des compétences complémentaires aux cours théoriques. Cette publication peut présenter le thème, le programme, les intervenants, la durée, les conditions d’inscription et les bénéfices attendus. Elle contribue à mieux valoriser les activités utiles à la progression des étudiants."
+              data-image="https://images.unsplash.com/photo-1552664730-d307ca884978"
+            >
+              <div class="relative">
+                <img
+                  src="https://images.unsplash.com/photo-1552664730-d307ca884978"
+                  alt="Personnes en formation autour d'une table"
+                  class="w-full h-48 object-cover"
+                />
+
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-slate-950/50 to-transparent opacity-0 group-hover:opacity-100 transition duration-300"
+                ></div>
+              </div>
+
+              <div class="p-6">
+                <span
+                  class="inline-flex items-center rounded-full bg-zinc-100 text-zinc-700 px-3 py-1 text-xs font-semibold uppercase tracking-wide"
+                >
+                  Opportunité
+                </span>
+
+                <h3 class="text-xl font-bold text-slate-900 mt-4 mb-3">
+                  Formation pratique
+                </h3>
+
+                <p class="text-gray-600 line-clamp-2 mb-5">
+                  Une activité pour développer des compétences utiles et mieux
+                  préparer son insertion professionnelle.
+                </p>
+
+                <div
+                  class="flex items-center justify-between pt-4 border-t border-slate-100"
+                >
+                  <span class="text-sm text-slate-500"> À venir </span>
+
+                  <span
+                    class="text-sm font-semibold text-slate-900 group-hover:underline"
+                  >
+                    Voir détails
+                  </span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Modale de détail enrichie -->
+      <div
+        id="galleryModal"
+        class="fixed inset-0 bg-slate-950/75 hidden items-center justify-center px-6 z-50"
+      >
+        <div
+          class="bg-white max-w-3xl w-full rounded-3xl shadow-2xl overflow-hidden relative max-h-[90vh] overflow-y-auto"
+        >
+          <!-- Bouton fermer -->
+          <button
+            id="closeModal"
+            type="button"
+            class="absolute top-4 right-5 w-10 h-10 bg-white/90 hover:bg-white rounded-full text-2xl font-bold text-slate-500 hover:text-slate-900 transition duration-300 z-10"
+            aria-label="Fermer la modale"
+          >
+            ×
+          </button>
+
+          <!-- Image -->
+          <img id="modalImage" src="" alt="" class="w-full h-72 object-cover" />
+
+          <!-- Contenu -->
+          <div class="p-8">
+            <p
+              id="modalType"
+              class="inline-flex items-center rounded-full bg-slate-100 text-slate-700 px-3 py-1 text-xs font-semibold uppercase tracking-wide mb-4"
+            >
+              Catégorie
+            </p>
+
+            <h3
+              id="modalTitle"
+              class="text-2xl md:text-4xl font-bold text-slate-950 mb-4"
+            >
+              Titre
+            </h3>
+
+            <p id="modalDescription" class="text-gray-600 leading-relaxed mb-8">
+              Description courte
+            </p>
+
+            <!-- Informations rapides -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+              <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4">
+                <p
+                  class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2"
+                >
+                  Date
+                </p>
+
+                <p id="modalDate" class="font-semibold text-slate-900">-</p>
+              </div>
+
+              <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4">
+                <p
+                  class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2"
+                >
+                  Public
+                </p>
+
+                <p id="modalPublic" class="font-semibold text-slate-900">-</p>
+              </div>
+
+              <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4">
+                <p
+                  class="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2"
+                >
+                  Statut
+                </p>
+
+                <p id="modalStatus" class="font-semibold text-slate-900">-</p>
+              </div>
+            </div>
+
+            <!-- Objectif -->
+            <div class="mb-8">
+              <h4 class="text-xl font-bold text-slate-950 mb-3">
+                Objectif du contenu
+              </h4>
+
+              <p id="modalObjective" class="text-gray-600 leading-relaxed">
+                Objectif
+              </p>
+            </div>
+
+            <!-- Détails -->
+            <div class="mb-8">
+              <h4 class="text-xl font-bold text-slate-950 mb-3">
+                Détails complémentaires
+              </h4>
+
+              <p id="modalDetails" class="text-gray-600 leading-relaxed">
+                Détails
+              </p>
+            </div>
+
+            <!-- CTA -->
+            <div
+              class="flex flex-col sm:flex-row gap-4 pt-6 border-t border-slate-200"
+            >
+              <a
+                href="contact.html"
+                class="bg-slate-900 hover:bg-slate-800 text-white text-center px-6 py-3 rounded-xl font-semibold transition duration-300"
+              >
+                Demander plus d’informations
+              </a>
+
+              <button
+                id="closeModalBottom"
+                type="button"
+                class="bg-slate-100 hover:bg-slate-200 text-slate-700 px-6 py-3 rounded-xl font-semibold transition duration-300"
+              >
+                Fermer
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Section FAQ -->
       <section id="faq" class="bg-slate-50 px-6 py-20">
         <div class="max-w-4xl mx-auto">
@@ -781,5 +1302,83 @@
         <p>#LPT #ChallengeLPT #LesProsDeLaTech</p>
       </div>
     </footer>
+
+    <script>
+      const filterButtons = document.querySelectorAll(".filter-btn");
+      const galleryItems = document.querySelectorAll(".gallery-item");
+
+      filterButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          const selectedCategory = button.dataset.filter;
+
+          filterButtons.forEach(function (btn) {
+            btn.classList.remove("bg-slate-900", "text-white");
+            btn.classList.add("bg-slate-100", "text-slate-700");
+          });
+
+          button.classList.remove("bg-slate-100", "text-slate-700");
+          button.classList.add("bg-slate-900", "text-white");
+
+          galleryItems.forEach(function (item) {
+            const itemCategory = item.dataset.category;
+
+            if (
+              selectedCategory === "all" ||
+              selectedCategory === itemCategory
+            ) {
+              item.classList.remove("hidden");
+            } else {
+              item.classList.add("hidden");
+            }
+          });
+        });
+      });
+
+      const galleryModal = document.getElementById("galleryModal");
+      const closeModal = document.getElementById("closeModal");
+      const closeModalBottom = document.getElementById("closeModalBottom");
+
+      const modalTitle = document.getElementById("modalTitle");
+      const modalType = document.getElementById("modalType");
+      const modalDescription = document.getElementById("modalDescription");
+      const modalImage = document.getElementById("modalImage");
+      const modalDate = document.getElementById("modalDate");
+      const modalPublic = document.getElementById("modalPublic");
+      const modalStatus = document.getElementById("modalStatus");
+      const modalObjective = document.getElementById("modalObjective");
+      const modalDetails = document.getElementById("modalDetails");
+
+      galleryItems.forEach(function (item) {
+        item.addEventListener("click", function () {
+          modalTitle.textContent = item.dataset.title;
+          modalType.textContent = item.dataset.type;
+          modalDescription.textContent = item.dataset.description;
+          modalImage.src = item.dataset.image;
+          modalImage.alt = item.dataset.title;
+          modalDate.textContent = item.dataset.date;
+          modalPublic.textContent = item.dataset.public;
+          modalStatus.textContent = item.dataset.status;
+          modalObjective.textContent = item.dataset.objective;
+          modalDetails.textContent = item.dataset.details;
+
+          galleryModal.classList.remove("hidden");
+          galleryModal.classList.add("flex");
+        });
+      });
+
+      function closeGalleryModal() {
+        galleryModal.classList.add("hidden");
+        galleryModal.classList.remove("flex");
+      }
+
+      closeModal.addEventListener("click", closeGalleryModal);
+      closeModalBottom.addEventListener("click", closeGalleryModal);
+
+      galleryModal.addEventListener("click", function (event) {
+        if (event.target === galleryModal) {
+          closeGalleryModal();
+        }
+      });
+    </script>
   </body>
 </html>

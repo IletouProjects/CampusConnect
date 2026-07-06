@@ -819,6 +819,110 @@
         </div>
       </section>
 
+      <!-- Section générateur aléatoire -->
+      <section id="random-content" class="bg-slate-50 px-6 py-20">
+        <div class="max-w-5xl mx-auto">
+          <!-- En-tête -->
+          <div class="max-w-3xl mx-auto text-center mb-12">
+            <p
+              class="text-sm font-semibold text-blue-600 uppercase tracking-widest mb-3"
+            >
+              Idées CampusConnect
+            </p>
+
+            <h2
+              class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4"
+            >
+              Une idée simple pour améliorer la vie du campus
+            </h2>
+
+            <p class="text-lg text-gray-600">
+              Cette section affiche automatiquement des idées liées à
+              CampusConnect. Tu peux aussi cliquer sur le bouton pour découvrir
+              une autre suggestion.
+            </p>
+          </div>
+
+          <!-- Carte principale -->
+          <div
+            class="bg-white border border-slate-200 rounded-3xl shadow-md p-6 md:p-10"
+          >
+            <!-- Haut de carte -->
+            <div
+              class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8"
+            >
+              <div>
+                <p class="text-sm text-slate-500 mb-1">Suggestion affichée</p>
+
+                <h3 class="text-xl font-bold text-slate-900">
+                  Générateur d’idées pour CampusConnect
+                </h3>
+              </div>
+
+              <div
+                class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 rounded-full px-4 py-2 w-fit"
+              >
+                <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
+                <span class="text-sm font-medium">
+                  Mise à jour automatique
+                </span>
+              </div>
+            </div>
+
+            <!-- Résultat dynamique -->
+            <div
+              class="bg-slate-50 border border-slate-200 rounded-2xl p-6 md:p-8 min-h-56 flex flex-col justify-between"
+            >
+              <p
+                id="randomResult"
+                class="text-xl md:text-2xl font-semibold leading-relaxed text-slate-900 transition duration-300"
+              >
+                Une idée liée à CampusConnect va s’afficher ici.
+              </p>
+
+              <div
+                class="mt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-t border-slate-200 pt-5"
+              >
+                <p id="ideaCounter" class="text-sm text-slate-500">
+                  Idée 0 / 15
+                </p>
+
+                <p class="text-sm text-slate-500">
+                  Changement toutes les 5 secondes
+                </p>
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mt-8">
+              <button
+                id="discoverButton"
+                type="button"
+                class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition duration-300 hover:scale-105"
+              >
+                Découvrir
+              </button>
+
+              <button
+                id="copyButton"
+                type="button"
+                class="bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 px-6 py-3 rounded-xl font-semibold transition duration-300 hover:scale-105"
+              >
+                Copier l’idée
+              </button>
+            </div>
+
+            <!-- Message de copie -->
+            <p
+              id="copyMessage"
+              class="text-center text-sm text-emerald-600 font-medium mt-5 hidden"
+            >
+              Idée copiée.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <!-- Modale de détail enrichie -->
       <div
         id="galleryModal"
@@ -1379,6 +1483,86 @@
           closeGalleryModal();
         }
       });
+    </script>
+    <script>
+      const campusContents = [
+        "Une annonce bien placée peut éviter beaucoup de confusion entre les étudiants.",
+        "CampusConnect peut aider les nouveaux étudiants à retrouver rapidement les informations importantes.",
+        "Les ressources de cours sont plus utiles lorsqu’elles sont regroupées au même endroit.",
+        "Un calendrier simple peut aider les étudiants à mieux suivre les événements du campus.",
+        "Les responsables de classe peuvent gagner du temps avec un espace clair pour partager les informations.",
+        "Les clubs étudiants peuvent utiliser CampusConnect pour rendre leurs activités plus visibles.",
+        "Une bonne plateforme étudiante doit rester simple, lisible et facile à utiliser sur téléphone.",
+        "CampusConnect peut réduire la dépendance aux messages dispersés dans plusieurs groupes.",
+        "Une information claire permet aux étudiants de mieux s’organiser au quotidien.",
+        "Les opportunités de stage ou de formation doivent être faciles à retrouver.",
+        "Une bibliothèque numérique peut aider les étudiants à mieux conserver leurs documents.",
+        "Le projet peut évoluer vers un espace personnel pour chaque étudiant.",
+        "Les notifications peuvent aider à ne pas rater les annonces importantes.",
+        "CampusConnect peut créer un lien plus simple entre étudiants, enseignants et administration.",
+        "La vraie valeur du projet est d’aider les étudiants à accéder plus vite aux bonnes informations.",
+      ];
+
+      const discoverButton = document.getElementById("discoverButton");
+      const copyButton = document.getElementById("copyButton");
+      const randomResult = document.getElementById("randomResult");
+      const copyMessage = document.getElementById("copyMessage");
+      const ideaCounter = document.getElementById("ideaCounter");
+
+      let currentIndex = -1;
+      let autoSlide;
+
+      function showRandomContent() {
+        let randomIndex = Math.floor(Math.random() * campusContents.length);
+
+        while (randomIndex === currentIndex) {
+          randomIndex = Math.floor(Math.random() * campusContents.length);
+        }
+
+        currentIndex = randomIndex;
+
+        randomResult.classList.add("opacity-0", "translate-y-1");
+
+        setTimeout(function () {
+          randomResult.innerText = campusContents[currentIndex];
+          ideaCounter.innerText =
+            "Idée " + (currentIndex + 1) + " / " + campusContents.length;
+
+          randomResult.classList.remove("opacity-0", "translate-y-1");
+          copyMessage.classList.add("hidden");
+        }, 200);
+      }
+
+      function startAutoSlide() {
+        autoSlide = setInterval(function () {
+          showRandomContent();
+        }, 5000);
+      }
+
+      function restartAutoSlide() {
+        clearInterval(autoSlide);
+        startAutoSlide();
+      }
+
+      discoverButton.addEventListener("click", function () {
+        showRandomContent();
+        restartAutoSlide();
+      });
+
+      copyButton.addEventListener("click", function () {
+        const contentToCopy = randomResult.innerText;
+
+        navigator.clipboard.writeText(contentToCopy);
+
+        copyMessage.classList.remove("hidden");
+
+        setTimeout(function () {
+          copyMessage.classList.add("hidden");
+        }, 2000);
+      });
+
+      showRandomContent();
+      startAutoSlide();
     </script>
   </body>
 </html>

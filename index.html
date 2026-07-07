@@ -1042,6 +1042,94 @@
         </div>
       </div>
 
+      <!-- Section outil de calcul -->
+      <section id="priority-tool" class="bg-white px-6 py-20">
+        <div class="max-w-5xl mx-auto">
+          <!-- En-tête -->
+          <div class="text-center max-w-3xl mx-auto mb-12">
+            <p
+              class="text-sm font-semibold text-blue-600 uppercase tracking-widest mb-3"
+            >
+              Outil CampusConnect
+            </p>
+
+            <h2
+              class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4"
+            >
+              Calculateur de priorité d’annonce
+            </h2>
+
+            <p class="text-lg text-gray-600">
+              Entrez la date limite d’une annonce pour savoir si elle doit être
+              traitée comme une information urgente, normale ou déjà dépassée.
+            </p>
+          </div>
+
+          <!-- Carte outil -->
+          <div
+            id="priorityCard"
+            class="bg-slate-50 border border-slate-200 rounded-3xl shadow-md p-6 md:p-10 transition duration-300"
+          >
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <!-- Partie formulaire -->
+              <div>
+                <label
+                  for="deadlineInput"
+                  class="block text-sm font-semibold text-slate-700 mb-3"
+                >
+                  Date limite de l’annonce
+                </label>
+
+                <input
+                  type="date"
+                  id="deadlineInput"
+                  class="w-full border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+                />
+
+                <button
+                  id="calculatePriorityButton"
+                  type="button"
+                  class="mt-5 w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition duration-300 hover:scale-105"
+                >
+                  Calculer la priorité
+                </button>
+
+                <p
+                  id="priorityError"
+                  class="hidden mt-4 text-sm font-medium text-red-600"
+                >
+                  Veuillez choisir une date valide avant de calculer la
+                  priorité.
+                </p>
+              </div>
+
+              <!-- Partie résultat -->
+              <div
+                class="bg-white border border-slate-200 rounded-2xl p-6 min-h-56 flex flex-col justify-center"
+              >
+                <p
+                  class="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-3"
+                >
+                  Résultat
+                </p>
+
+                <h3
+                  id="priorityTitle"
+                  class="text-2xl md:text-3xl font-bold text-slate-900 mb-4"
+                >
+                  En attente d’une date
+                </h3>
+
+                <p id="priorityResult" class="text-gray-600 leading-relaxed">
+                  Le niveau de priorité de l’annonce s’affichera ici après le
+                  calcul.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Section FAQ -->
       <section id="faq" class="bg-slate-50 px-6 py-20">
         <div class="max-w-4xl mx-auto">
@@ -1563,6 +1651,82 @@
 
       showRandomContent();
       startAutoSlide();
+    </script>
+    <script>
+      const deadlineInput = document.getElementById("deadlineInput");
+      const calculatePriorityButton = document.getElementById(
+        "calculatePriorityButton",
+      );
+      const priorityTitle = document.getElementById("priorityTitle");
+      const priorityResult = document.getElementById("priorityResult");
+      const priorityError = document.getElementById("priorityError");
+      const priorityCard = document.getElementById("priorityCard");
+
+      calculatePriorityButton.addEventListener("click", function () {
+        const deadlineValue = deadlineInput.value;
+
+        if (deadlineValue === "") {
+          priorityError.classList.remove("hidden");
+
+          priorityTitle.innerText = "Date manquante";
+          priorityResult.innerText =
+            "Choisis une date limite pour que CampusConnect puisse calculer la priorité de cette annonce.";
+
+          priorityCard.className =
+            "bg-gradient-to-br from-red-100 to-rose-200 border border-red-300 rounded-3xl shadow-lg p-6 md:p-10 transition duration-300";
+
+          return;
+        }
+
+        priorityError.classList.add("hidden");
+
+        const today = new Date();
+        const deadlineDate = new Date(deadlineValue);
+
+        today.setHours(0, 0, 0, 0);
+        deadlineDate.setHours(0, 0, 0, 0);
+
+        const differenceInTime = deadlineDate.getTime() - today.getTime();
+        const differenceInDays = Math.ceil(
+          differenceInTime / (1000 * 60 * 60 * 24),
+        );
+
+        if (differenceInDays < 0) {
+          priorityTitle.innerText = "Annonce dépassée";
+          priorityResult.innerText =
+            "Cette date est déjà passée. L’annonce doit être mise à jour ou archivée pour éviter de partager une information dépassée.";
+
+          priorityCard.className =
+            "bg-gradient-to-br from-slate-200 to-slate-400 border border-slate-400 rounded-3xl shadow-lg p-6 md:p-10 transition duration-300";
+        } else if (differenceInDays <= 2) {
+          priorityTitle.innerText = "Priorité urgente";
+          priorityResult.innerText =
+            "Il reste " +
+            differenceInDays +
+            " jour(s). Cette annonce doit être mise en avant rapidement pour que les étudiants ne ratent pas l’information.";
+
+          priorityCard.className =
+            "bg-gradient-to-br from-red-100 to-orange-300 border border-orange-400 rounded-3xl shadow-lg p-6 md:p-10 transition duration-300";
+        } else if (differenceInDays <= 7) {
+          priorityTitle.innerText = "Priorité à surveiller";
+          priorityResult.innerText =
+            "Il reste " +
+            differenceInDays +
+            " jour(s). L’annonce est importante et doit rester visible sur CampusConnect.";
+
+          priorityCard.className =
+            "bg-gradient-to-br from-yellow-100 to-amber-300 border border-amber-400 rounded-3xl shadow-lg p-6 md:p-10 transition duration-300";
+        } else {
+          priorityTitle.innerText = "Priorité normale";
+          priorityResult.innerText =
+            "Il reste " +
+            differenceInDays +
+            " jour(s). L’annonce peut être publiée normalement et suivie dans le calendrier du campus.";
+
+          priorityCard.className =
+            "bg-gradient-to-br from-emerald-100 to-green-300 border border-green-400 rounded-3xl shadow-lg p-6 md:p-10 transition duration-300";
+        }
+      });
     </script>
   </body>
 </html>

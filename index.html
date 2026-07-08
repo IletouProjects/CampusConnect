@@ -1129,6 +1129,139 @@
           </div>
         </div>
       </section>
+      <!-- Section liste dynamique CampusConnect -->
+      <section id="task-manager" class="bg-[#F8F6F0] px-6 py-20">
+        <div class="max-w-5xl mx-auto">
+          <!-- En-tête -->
+          <div class="text-center max-w-3xl mx-auto mb-12">
+            <p
+              class="text-sm font-semibold text-blue-600 uppercase tracking-widest mb-3"
+            >
+              Organisation CampusConnect
+            </p>
+
+            <h2
+              class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4"
+            >
+              Liste des actions à traiter
+            </h2>
+
+            <p class="text-lg text-gray-600">
+              Ajoute les actions importantes à suivre pour CampusConnect, coche
+              celles qui sont traitées et garde une vue claire sur ce qui reste
+              à faire.
+            </p>
+          </div>
+
+          <!-- Carte principale -->
+          <div
+            class="bg-white border border-[#E6DED0] rounded-3xl shadow-md p-6 md:p-10"
+          >
+            <!-- Zone ajout / modification -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+              <!-- Champ tâche -->
+              <div>
+                <label
+                  for="taskInput"
+                  class="block text-sm font-semibold text-slate-700 mb-2"
+                >
+                  Action à traiter
+                </label>
+
+                <input
+                  id="taskInput"
+                  type="text"
+                  placeholder="Exemple : Publier une annonce de rentrée"
+                  class="w-full border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+                />
+              </div>
+
+              <!-- Date de début -->
+              <div>
+                <label
+                  for="taskStartDateInput"
+                  class="block text-sm font-semibold text-slate-700 mb-2"
+                >
+                  Date de début
+                </label>
+
+                <input
+                  id="taskStartDateInput"
+                  type="date"
+                  class="w-full border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+                />
+              </div>
+
+              <!-- Date de fin -->
+              <div>
+                <label
+                  for="taskEndDateInput"
+                  class="block text-sm font-semibold text-slate-700 mb-2"
+                >
+                  Date de fin
+                </label>
+
+                <input
+                  id="taskEndDateInput"
+                  type="date"
+                  class="w-full border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+                />
+              </div>
+
+              <!-- Bouton action -->
+              <div class="flex items-end">
+                <button
+                  id="addTaskButton"
+                  type="button"
+                  class="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition duration-300 hover:scale-105"
+                >
+                  Ajouter
+                </button>
+              </div>
+            </div>
+
+            <!-- Message d'erreur -->
+            <p
+              id="taskError"
+              class="hidden text-sm font-medium text-red-600 mb-6"
+            >
+              Merci d’écrire une action, de choisir une date de début et une
+              date de fin.
+            </p>
+            <!-- Résumé -->
+            <div
+              class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 bg-[#F8F6F0] border border-[#E6DED0] rounded-2xl px-5 py-4 mb-6"
+            >
+              <p class="text-slate-700">
+                Actions actives :
+                <span id="activeTaskCount" class="font-bold text-slate-900"
+                  >0</span
+                >
+              </p>
+
+              <p class="text-sm text-slate-500">
+                Les éléments cochés restent visibles mais ne sont plus comptés
+                comme actifs.
+              </p>
+            </div>
+
+            <!-- Liste dynamique -->
+            <ul id="taskList" class="space-y-4">
+              <!-- Les tâches seront ajoutées ici avec JavaScript -->
+            </ul>
+
+            <!-- État vide -->
+            <div
+              id="emptyState"
+              class="text-center border border-dashed border-slate-300 rounded-2xl p-8 mt-6"
+            >
+              <p class="text-slate-500">
+                Aucune action ajoutée pour le moment.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <!-- Section FAQ -->
       <section id="faq" class="bg-slate-50 px-6 py-20">
@@ -1727,6 +1860,291 @@
             "bg-gradient-to-br from-emerald-100 to-green-300 border border-green-400 rounded-3xl shadow-lg p-6 md:p-10 transition duration-300";
         }
       });
+    </script>
+    <script>
+      const taskInput = document.getElementById("taskInput");
+      const taskStartDateInput = document.getElementById("taskStartDateInput");
+      const taskEndDateInput = document.getElementById("taskEndDateInput");
+      const addTaskButton = document.getElementById("addTaskButton");
+      const taskList = document.getElementById("taskList");
+      const taskError = document.getElementById("taskError");
+      const activeTaskCount = document.getElementById("activeTaskCount");
+      const emptyState = document.getElementById("emptyState");
+
+      let tasks = JSON.parse(localStorage.getItem("campusTasks")) || [];
+      let editIndex = null;
+
+      function saveTasks() {
+        localStorage.setItem("campusTasks", JSON.stringify(tasks));
+      }
+
+      function formatDate(dateValue) {
+        const date = new Date(dateValue);
+
+        return date.toLocaleDateString("fr-FR", {
+          day: "2-digit",
+          month: "long",
+          year: "numeric",
+        });
+      }
+
+      function getTaskStatus(task) {
+        if (task.done) {
+          return {
+            label: "Traitée",
+            className: "bg-[#EAF0FA] text-[#355070] border-[#B8C8E6]",
+          };
+        }
+
+        const today = new Date();
+        const endDate = new Date(task.endDate);
+
+        today.setHours(0, 0, 0, 0);
+        endDate.setHours(0, 0, 0, 0);
+
+        const differenceInTime = endDate.getTime() - today.getTime();
+        const differenceInDays = Math.ceil(
+          differenceInTime / (1000 * 60 * 60 * 24),
+        );
+
+        if (differenceInDays < 0) {
+          return {
+            label: "En retard",
+            className: "bg-[#F8F6F0] text-[#7A5C47] border-[#E6DED0]",
+          };
+        }
+
+        if (differenceInDays === 0) {
+          return {
+            label: "À finir aujourd’hui",
+            className: "bg-[#EDF6F9] text-[#24576B] border-[#BFD8E2]",
+          };
+        }
+
+        if (differenceInDays <= 3) {
+          return {
+            label: "Prioritaire",
+            className: "bg-[#F7F1E6] text-[#7A5C2E] border-[#DED0B8]",
+          };
+        }
+
+        return {
+          label: "Planifiée",
+          className: "bg-[#F4F7F5] text-[#3E5C4A] border-[#C8D8CE]",
+        };
+      }
+
+      function updateActiveCount() {
+        const activeTasks = tasks.filter(function (task) {
+          return task.done === false;
+        });
+
+        activeTaskCount.innerText = activeTasks.length;
+
+        if (tasks.length === 0) {
+          emptyState.classList.remove("hidden");
+        } else {
+          emptyState.classList.add("hidden");
+        }
+      }
+
+      function resetForm() {
+        taskInput.value = "";
+        taskStartDateInput.value = "";
+        taskEndDateInput.value = "";
+        taskError.classList.add("hidden");
+
+        editIndex = null;
+        addTaskButton.innerText = "Ajouter";
+        addTaskButton.className =
+          "w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition duration-300 hover:scale-105";
+
+        taskInput.focus();
+      }
+
+      function renderTasks() {
+        taskList.innerHTML = "";
+
+        tasks.forEach(function (task, index) {
+          const status = getTaskStatus(task);
+
+          const li = document.createElement("li");
+          li.className =
+            "bg-white border border-slate-200 rounded-2xl p-5 shadow-sm transition duration-300 hover:shadow-md";
+
+          const row = document.createElement("div");
+          row.className =
+            "flex flex-col lg:flex-row lg:items-start lg:justify-between gap-5";
+
+          const leftBlock = document.createElement("div");
+          leftBlock.className = "flex items-start gap-4 flex-1";
+
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.checked = task.done;
+          checkbox.className =
+            "mt-1 w-5 h-5 rounded border-slate-300 text-blue-600 focus:ring-blue-500 cursor-pointer";
+
+          const contentBlock = document.createElement("div");
+          contentBlock.className = "flex-1";
+
+          const taskText = document.createElement("p");
+          taskText.innerText = task.text;
+          taskText.className = "text-slate-800 font-semibold";
+
+          if (task.done) {
+            taskText.classList.add("line-through", "text-slate-400");
+          }
+
+          const taskDates = document.createElement("p");
+          if (task.startDate === task.endDate) {
+            taskDates.innerText = "Prévu le " + formatDate(task.startDate);
+          } else {
+            taskDates.innerText =
+              "Du " +
+              formatDate(task.startDate) +
+              " au " +
+              formatDate(task.endDate);
+          }
+          taskDates.className = "text-sm text-slate-500 mt-1";
+
+          contentBlock.appendChild(taskText);
+          contentBlock.appendChild(taskDates);
+
+          checkbox.addEventListener("change", function () {
+            tasks[index].done = checkbox.checked;
+            saveTasks();
+            renderTasks();
+          });
+
+          leftBlock.appendChild(checkbox);
+          leftBlock.appendChild(contentBlock);
+
+          const rightBlock = document.createElement("div");
+          rightBlock.className =
+            "flex flex-wrap items-center gap-3 lg:justify-end";
+
+          const statusBadge = document.createElement("span");
+          statusBadge.innerText = status.label;
+          statusBadge.className =
+            "inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold " +
+            status.className;
+
+          const editButton = document.createElement("button");
+          editButton.type = "button";
+          editButton.innerText = "Modifier";
+          editButton.className =
+            "bg-[#EDF6F9] hover:bg-[#DDEFF5] text-[#24576B] px-4 py-2 rounded-xl text-sm font-semibold transition duration-300";
+
+          editButton.addEventListener("click", function () {
+            taskInput.value = task.text;
+            taskStartDateInput.value = task.startDate;
+            taskEndDateInput.value = task.endDate;
+
+            editIndex = index;
+
+            addTaskButton.innerText = "Mettre à jour";
+            addTaskButton.className =
+              "w-full bg-[#24576B] hover:bg-[#1D4656] text-white px-6 py-3 rounded-xl font-semibold transition duration-300 hover:scale-105";
+
+            taskInput.focus();
+          });
+
+          const deleteButton = document.createElement("button");
+          deleteButton.type = "button";
+          deleteButton.innerText = "Supprimer";
+          deleteButton.className =
+            "bg-[#F8F6F0] hover:bg-[#EFE8DA] text-slate-700 px-4 py-2 rounded-xl text-sm font-semibold transition duration-300";
+
+          deleteButton.addEventListener("click", function () {
+            tasks.splice(index, 1);
+            saveTasks();
+
+            if (editIndex === index) {
+              resetForm();
+            }
+
+            renderTasks();
+          });
+
+          rightBlock.appendChild(statusBadge);
+          rightBlock.appendChild(editButton);
+          rightBlock.appendChild(deleteButton);
+
+          row.appendChild(leftBlock);
+          row.appendChild(rightBlock);
+
+          li.appendChild(row);
+          taskList.appendChild(li);
+        });
+
+        updateActiveCount();
+      }
+
+      function addOrUpdateTask() {
+        const taskValue = taskInput.value.trim();
+        const startDateValue = taskStartDateInput.value;
+        const endDateValue = taskEndDateInput.value;
+
+        if (taskValue === "" || startDateValue === "" || endDateValue === "") {
+          taskError.innerText =
+            "Merci d’écrire une action, de choisir une date de début et une date de fin.";
+          taskError.classList.remove("hidden");
+          return;
+        }
+
+        const startDate = new Date(startDateValue);
+        const endDate = new Date(endDateValue);
+
+        if (endDate < startDate) {
+          taskError.innerText =
+            "La date de fin ne peut pas être avant la date de début.";
+          taskError.classList.remove("hidden");
+          return;
+        }
+
+        taskError.classList.add("hidden");
+
+        const taskData = {
+          text: taskValue,
+          startDate: startDateValue,
+          endDate: endDateValue,
+          done: false,
+        };
+
+        if (editIndex === null) {
+          tasks.push(taskData);
+        } else {
+          taskData.done = tasks[editIndex].done;
+          tasks[editIndex] = taskData;
+        }
+
+        saveTasks();
+        renderTasks();
+        resetForm();
+      }
+
+      addTaskButton.addEventListener("click", addOrUpdateTask);
+
+      taskInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          addOrUpdateTask();
+        }
+      });
+
+      taskStartDateInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          addOrUpdateTask();
+        }
+      });
+
+      taskEndDateInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          addOrUpdateTask();
+        }
+      });
+
+      renderTasks();
     </script>
   </body>
 </html>

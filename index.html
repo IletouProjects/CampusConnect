@@ -1263,6 +1263,111 @@
         </div>
       </section>
 
+      <!-- Section formulaire de contact -->
+<section id="contact-form" class="bg-[#F8F6F0] px-6 py-20">
+  <div class="max-w-5xl mx-auto">
+
+    <!-- En-tête -->
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <p class="text-sm font-semibold text-blue-600 uppercase tracking-widest mb-3">
+        Contact
+      </p>
+
+      <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4">
+        Contactez CampusConnect
+      </h1>
+
+      <p class="text-lg text-gray-600">
+        Une question, une suggestion ou une idée pour améliorer la vie du campus ?
+        Envoyez-nous un message directement depuis ce formulaire.
+      </p>
+    </div>
+
+    <!-- Carte formulaire -->
+    <div class="bg-white border border-[#E6DED0] rounded-3xl shadow-md p-6 md:p-10">
+      <form id="contactForm" novalidate class="space-y-6">
+
+        <!-- Champ nom -->
+        <div>
+          <label for="nameInput" class="block text-sm font-semibold text-slate-700 mb-2">
+            Nom complet
+          </label>
+
+          <input
+            id="nameInput"
+            type="text"
+            placeholder="Exemple : Kossi Mensah"
+            class="w-full border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+          >
+
+          <p id="nameError" class="hidden text-sm font-medium text-[#9B5A4A] mt-2">
+            Le nom est obligatoire.
+          </p>
+        </div>
+
+        <!-- Champ email -->
+        <div>
+          <label for="emailInput" class="block text-sm font-semibold text-slate-700 mb-2">
+            Adresse email
+          </label>
+
+          <input
+            id="emailInput"
+            type="email"
+            placeholder="Exemple : contact@campusconnect.com"
+            class="w-full border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+          >
+
+          <p id="emailError" class="hidden text-sm font-medium text-[#9B5A4A] mt-2">
+            L’adresse email est obligatoire.
+          </p>
+        </div>
+
+        <!-- Champ message -->
+        <div>
+          <label for="messageInput" class="block text-sm font-semibold text-slate-700 mb-2">
+            Message
+          </label>
+
+          <textarea
+            id="messageInput"
+            rows="6"
+            placeholder="Expliquez brièvement votre demande ou votre suggestion..."
+            class="w-full border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300 resize-none"
+          ></textarea>
+
+          <div class="flex items-center justify-between mt-2">
+            <p id="messageError" class="hidden text-sm font-medium text-[#9B5A4A]">
+              Le message doit contenir au moins 20 caractères.
+            </p>
+
+            <p id="messageCounter" class="text-sm text-slate-500 ml-auto">
+              0 / 20 caractères minimum
+            </p>
+          </div>
+        </div>
+
+        <!-- Message global -->
+        <div
+          id="formFeedback"
+          class="hidden rounded-2xl px-5 py-4 text-sm font-medium"
+        >
+          Message dynamique
+        </div>
+
+        <!-- Bouton -->
+        <button
+          type="submit"
+          class="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white px-7 py-3 rounded-xl font-semibold transition duration-300 hover:scale-105"
+        >
+          Envoyer le message
+        </button>
+
+      </form>
+    </div>
+  </div>
+</section>
+
       <!-- Section FAQ -->
       <section id="faq" class="bg-slate-50 px-6 py-20">
         <div class="max-w-4xl mx-auto">
@@ -2146,5 +2251,138 @@
 
       renderTasks();
     </script>
+    <script>
+  const contactForm = document.getElementById("contactForm");
+
+  const nameInput = document.getElementById("nameInput");
+  const emailInput = document.getElementById("emailInput");
+  const messageInput = document.getElementById("messageInput");
+
+  const nameError = document.getElementById("nameError");
+  const emailError = document.getElementById("emailError");
+  const messageError = document.getElementById("messageError");
+
+  const messageCounter = document.getElementById("messageCounter");
+  const formFeedback = document.getElementById("formFeedback");
+
+  function showError(input, errorElement, message) {
+    errorElement.innerText = message;
+    errorElement.classList.remove("hidden");
+
+    input.classList.remove("border-slate-300", "focus:ring-blue-500", "focus:border-blue-500");
+    input.classList.add("border-[#C98C7A]", "focus:ring-[#C98C7A]", "focus:border-[#C98C7A]");
+  }
+
+  function showSuccess(input, errorElement) {
+    errorElement.classList.add("hidden");
+
+    input.classList.remove("border-[#C98C7A]", "focus:ring-[#C98C7A]", "focus:border-[#C98C7A]");
+    input.classList.add("border-[#BFD8E2]", "focus:ring-blue-500", "focus:border-blue-500");
+  }
+
+  function validateName() {
+    const nameValue = nameInput.value.trim();
+
+    if (nameValue === "") {
+      showError(nameInput, nameError, "Le nom est obligatoire.");
+      return false;
+    }
+
+    if (nameValue.length < 2) {
+      showError(nameInput, nameError, "Le nom doit contenir au moins 2 caractères.");
+      return false;
+    }
+
+    showSuccess(nameInput, nameError);
+    return true;
+  }
+
+  function validateEmail() {
+    const emailValue = emailInput.value.trim();
+
+    if (emailValue === "") {
+      showError(emailInput, emailError, "L’adresse email est obligatoire.");
+      return false;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(emailValue)) {
+      showError(emailInput, emailError, "Veuillez entrer une adresse email valide.");
+      return false;
+    }
+
+    showSuccess(emailInput, emailError);
+    return true;
+  }
+
+  function validateMessage() {
+    const messageValue = messageInput.value.trim();
+    const messageLength = messageValue.length;
+
+    messageCounter.innerText = messageLength + " / 20 caractères minimum";
+
+    if (messageValue === "") {
+      showError(messageInput, messageError, "Le message est obligatoire.");
+      return false;
+    }
+
+    if (messageLength < 20) {
+      showError(
+        messageInput,
+        messageError,
+        "Le message doit contenir au moins 20 caractères."
+      );
+      return false;
+    }
+
+    showSuccess(messageInput, messageError);
+    return true;
+  }
+
+  function showGlobalFeedback(type, message) {
+    formFeedback.innerText = message;
+    formFeedback.classList.remove("hidden");
+
+    formFeedback.className = "rounded-2xl px-5 py-4 text-sm font-medium";
+
+    if (type === "success") {
+      formFeedback.classList.add("bg-[#EDF6F9]", "text-[#24576B]", "border", "border-[#BFD8E2]");
+    } else {
+      formFeedback.classList.add("bg-[#F8F6F0]", "text-[#7A5C47]", "border", "border-[#E6DED0]");
+    }
+  }
+
+  nameInput.addEventListener("input", validateName);
+  emailInput.addEventListener("input", validateEmail);
+  messageInput.addEventListener("input", validateMessage);
+
+  contactForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const isNameValid = validateName();
+    const isEmailValid = validateEmail();
+    const isMessageValid = validateMessage();
+
+    if (isNameValid && isEmailValid && isMessageValid) {
+      showGlobalFeedback(
+        "success",
+        "Votre message est prêt à être envoyé. Merci pour votre contribution à CampusConnect."
+      );
+
+      contactForm.reset();
+      messageCounter.innerText = "0 / 20 caractères minimum";
+
+      nameInput.classList.remove("border-[#BFD8E2]");
+      emailInput.classList.remove("border-[#BFD8E2]");
+      messageInput.classList.remove("border-[#BFD8E2]");
+    } else {
+      showGlobalFeedback(
+        "error",
+        "Veuillez corriger les champs signalés avant d’envoyer le formulaire."
+      );
+    }
+  });
+</script>
   </body>
 </html>

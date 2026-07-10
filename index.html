@@ -1264,109 +1264,257 @@
       </section>
 
       <!-- Section formulaire de contact -->
-<section id="contact-form" class="bg-[#F8F6F0] px-6 py-20">
-  <div class="max-w-5xl mx-auto">
-
-    <!-- En-tête -->
-    <div class="text-center max-w-3xl mx-auto mb-12">
-      <p class="text-sm font-semibold text-blue-600 uppercase tracking-widest mb-3">
-        Contact
-      </p>
-
-      <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4">
-        Contactez CampusConnect
-      </h1>
-
-      <p class="text-lg text-gray-600">
-        Une question, une suggestion ou une idée pour améliorer la vie du campus ?
-        Envoyez-nous un message directement depuis ce formulaire.
-      </p>
-    </div>
-
-    <!-- Carte formulaire -->
-    <div class="bg-white border border-[#E6DED0] rounded-3xl shadow-md p-6 md:p-10">
-      <form id="contactForm" novalidate class="space-y-6">
-
-        <!-- Champ nom -->
-        <div>
-          <label for="nameInput" class="block text-sm font-semibold text-slate-700 mb-2">
-            Nom complet
-          </label>
-
-          <input
-            id="nameInput"
-            type="text"
-            placeholder="Exemple : Kossi Mensah"
-            class="w-full border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
-          >
-
-          <p id="nameError" class="hidden text-sm font-medium text-[#9B5A4A] mt-2">
-            Le nom est obligatoire.
-          </p>
-        </div>
-
-        <!-- Champ email -->
-        <div>
-          <label for="emailInput" class="block text-sm font-semibold text-slate-700 mb-2">
-            Adresse email
-          </label>
-
-          <input
-            id="emailInput"
-            type="email"
-            placeholder="Exemple : contact@campusconnect.com"
-            class="w-full border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
-          >
-
-          <p id="emailError" class="hidden text-sm font-medium text-[#9B5A4A] mt-2">
-            L’adresse email est obligatoire.
-          </p>
-        </div>
-
-        <!-- Champ message -->
-        <div>
-          <label for="messageInput" class="block text-sm font-semibold text-slate-700 mb-2">
-            Message
-          </label>
-
-          <textarea
-            id="messageInput"
-            rows="6"
-            placeholder="Expliquez brièvement votre demande ou votre suggestion..."
-            class="w-full border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300 resize-none"
-          ></textarea>
-
-          <div class="flex items-center justify-between mt-2">
-            <p id="messageError" class="hidden text-sm font-medium text-[#9B5A4A]">
-              Le message doit contenir au moins 20 caractères.
+      <section id="contact-form" class="bg-[#F8F6F0] px-6 py-20">
+        <div class="max-w-5xl mx-auto">
+          <!-- En-tête -->
+          <div class="text-center max-w-3xl mx-auto mb-12">
+            <p
+              class="text-sm font-semibold text-blue-600 uppercase tracking-widest mb-3"
+            >
+              Contact
             </p>
 
-            <p id="messageCounter" class="text-sm text-slate-500 ml-auto">
-              0 / 20 caractères minimum
+            <h1
+              class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4"
+            >
+              Contactez CampusConnect
+            </h1>
+
+            <p class="text-lg text-gray-600">
+              Une question, une suggestion ou une idée pour améliorer la vie du
+              campus ? Envoyez-nous un message directement depuis ce formulaire.
             </p>
           </div>
+
+          <!-- Carte formulaire -->
+          <div
+            class="bg-white border border-[#E6DED0] rounded-3xl shadow-md p-6 md:p-10"
+          >
+            <form id="contactForm" novalidate class="space-y-6">
+              <!-- Champ nom -->
+              <div>
+                <label
+                  for="nameInput"
+                  class="block text-sm font-semibold text-slate-700 mb-2"
+                >
+                  Nom complet
+                </label>
+
+                <input
+                  id="nameInput"
+                  type="text"
+                  placeholder="Exemple : Kossi Mensah"
+                  class="w-full border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+                />
+
+                <p
+                  id="nameError"
+                  class="hidden text-sm font-medium text-[#9B5A4A] mt-2"
+                >
+                  Le nom est obligatoire.
+                </p>
+              </div>
+
+              <!-- Champ email -->
+              <div>
+                <label
+                  for="emailInput"
+                  class="block text-sm font-semibold text-slate-700 mb-2"
+                >
+                  Adresse email
+                </label>
+
+                <input
+                  id="emailInput"
+                  type="email"
+                  placeholder="Exemple : contact@campusconnect.com"
+                  class="w-full border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
+                />
+
+                <p
+                  id="emailError"
+                  class="hidden text-sm font-medium text-[#9B5A4A] mt-2"
+                >
+                  L’adresse email est obligatoire.
+                </p>
+              </div>
+
+              <!-- Champ message -->
+              <div>
+                <label
+                  for="messageInput"
+                  class="block text-sm font-semibold text-slate-700 mb-2"
+                >
+                  Message
+                </label>
+
+                <textarea
+                  id="messageInput"
+                  rows="6"
+                  placeholder="Expliquez brièvement votre demande ou votre suggestion..."
+                  class="w-full border border-slate-300 rounded-xl px-4 py-3 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300 resize-none"
+                ></textarea>
+
+                <div class="flex items-center justify-between mt-2">
+                  <p
+                    id="messageError"
+                    class="hidden text-sm font-medium text-[#9B5A4A]"
+                  >
+                    Le message doit contenir au moins 20 caractères.
+                  </p>
+
+                  <p id="messageCounter" class="text-sm text-slate-500 ml-auto">
+                    0 / 20 caractères minimum
+                  </p>
+                </div>
+              </div>
+
+              <!-- Message global -->
+              <div
+                id="formFeedback"
+                class="hidden rounded-2xl px-5 py-4 text-sm font-medium"
+              >
+                Message dynamique
+              </div>
+
+              <!-- Bouton -->
+              <button
+                type="submit"
+                class="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white px-7 py-3 rounded-xl font-semibold transition duration-300 hover:scale-105"
+              >
+                Envoyer le message
+              </button>
+            </form>
+          </div>
         </div>
+      </section>
+      <!-- Section quiz CampusConnect -->
+      <section id="campus-quiz" class="bg-[#F8F6F0] px-6 py-20">
+        <div class="max-w-4xl mx-auto">
+          <!-- En-tête -->
+          <div class="text-center max-w-3xl mx-auto mb-12">
+            <p
+              class="text-sm font-semibold text-blue-600 uppercase tracking-widest mb-3"
+            >
+              Quiz CampusConnect
+            </p>
 
-        <!-- Message global -->
-        <div
-          id="formFeedback"
-          class="hidden rounded-2xl px-5 py-4 text-sm font-medium"
-        >
-          Message dynamique
+            <h2
+              class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-4"
+            >
+              Teste ta compréhension du projet
+            </h2>
+
+            <p class="text-lg text-gray-600">
+              Réponds aux questions pour voir si tu as bien compris l’utilité de
+              CampusConnect dans l’organisation de la vie étudiante.
+            </p>
+          </div>
+
+          <!-- Carte quiz -->
+          <div
+            class="bg-white border border-[#E6DED0] rounded-3xl shadow-md p-6 md:p-10"
+          >
+            <!-- Haut du quiz -->
+            <div id="quizBox">
+              <div
+                class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6"
+              >
+                <p
+                  id="questionCounter"
+                  class="text-sm font-semibold text-slate-500"
+                >
+                  Question 1 / 5
+                </p>
+
+                <p id="timerText" class="text-sm font-semibold text-[#24576B]">
+                  Temps restant : 15s
+                </p>
+              </div>
+
+              <!-- Barre timer -->
+              <div
+                class="w-full bg-slate-100 rounded-full h-3 mb-8 overflow-hidden"
+              >
+                <div
+                  id="timerBar"
+                  class="h-3 bg-[#BFD8E2] rounded-full transition-all duration-1000"
+                  style="width: 100%"
+                ></div>
+              </div>
+
+              <!-- Question -->
+              <h3
+                id="questionText"
+                class="text-2xl md:text-3xl font-bold text-slate-900 mb-8"
+              >
+                Question affichée ici
+              </h3>
+
+              <!-- Réponses -->
+              <div id="answerList" class="grid grid-cols-1 gap-4 mb-8">
+                <!-- Les réponses seront générées ici avec JavaScript -->
+              </div>
+
+              <!-- Message d'erreur -->
+              <p
+                id="quizError"
+                class="hidden text-sm font-medium text-[#9B5A4A] mb-6"
+              >
+                Choisis une réponse avant de passer à la question suivante.
+              </p>
+
+              <!-- Bouton suivant -->
+              <button
+                id="nextQuestionButton"
+                type="button"
+                class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white px-7 py-3 rounded-xl font-semibold transition duration-300 hover:scale-105"
+              >
+                Suivant
+              </button>
+            </div>
+
+            <!-- Résultat final -->
+            <div id="resultBox" class="hidden text-center">
+              <p
+                class="text-sm font-semibold text-blue-600 uppercase tracking-widest mb-3"
+              >
+                Résultat du quiz
+              </p>
+
+              <h3
+                id="scoreTitle"
+                class="text-3xl md:text-4xl font-bold text-slate-900 mb-4"
+              >
+                Score
+              </h3>
+
+              <p
+                id="scoreMessage"
+                class="text-lg text-gray-600 max-w-2xl mx-auto mb-8"
+              >
+                Message final
+              </p>
+
+              <div
+                class="bg-[#F8F6F0] border border-[#E6DED0] rounded-2xl p-6 mb-8"
+              >
+                <p id="scoreDetails" class="text-xl font-bold text-slate-900">
+                  Tu as obtenu 0 / 5.
+                </p>
+              </div>
+
+              <button
+                id="restartQuizButton"
+                type="button"
+                class="bg-blue-600 hover:bg-blue-700 text-white px-7 py-3 rounded-xl font-semibold transition duration-300 hover:scale-105"
+              >
+                Recommencer
+              </button>
+            </div>
+          </div>
         </div>
-
-        <!-- Bouton -->
-        <button
-          type="submit"
-          class="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white px-7 py-3 rounded-xl font-semibold transition duration-300 hover:scale-105"
-        >
-          Envoyer le message
-        </button>
-
-      </form>
-    </div>
-  </div>
-</section>
+      </section>
 
       <!-- Section FAQ -->
       <section id="faq" class="bg-slate-50 px-6 py-20">
@@ -2252,137 +2400,386 @@
       renderTasks();
     </script>
     <script>
-  const contactForm = document.getElementById("contactForm");
+      const contactForm = document.getElementById("contactForm");
 
-  const nameInput = document.getElementById("nameInput");
-  const emailInput = document.getElementById("emailInput");
-  const messageInput = document.getElementById("messageInput");
+      const nameInput = document.getElementById("nameInput");
+      const emailInput = document.getElementById("emailInput");
+      const messageInput = document.getElementById("messageInput");
 
-  const nameError = document.getElementById("nameError");
-  const emailError = document.getElementById("emailError");
-  const messageError = document.getElementById("messageError");
+      const nameError = document.getElementById("nameError");
+      const emailError = document.getElementById("emailError");
+      const messageError = document.getElementById("messageError");
 
-  const messageCounter = document.getElementById("messageCounter");
-  const formFeedback = document.getElementById("formFeedback");
+      const messageCounter = document.getElementById("messageCounter");
+      const formFeedback = document.getElementById("formFeedback");
 
-  function showError(input, errorElement, message) {
-    errorElement.innerText = message;
-    errorElement.classList.remove("hidden");
+      function showError(input, errorElement, message) {
+        errorElement.innerText = message;
+        errorElement.classList.remove("hidden");
 
-    input.classList.remove("border-slate-300", "focus:ring-blue-500", "focus:border-blue-500");
-    input.classList.add("border-[#C98C7A]", "focus:ring-[#C98C7A]", "focus:border-[#C98C7A]");
-  }
+        input.classList.remove(
+          "border-slate-300",
+          "focus:ring-blue-500",
+          "focus:border-blue-500",
+        );
+        input.classList.add(
+          "border-[#C98C7A]",
+          "focus:ring-[#C98C7A]",
+          "focus:border-[#C98C7A]",
+        );
+      }
 
-  function showSuccess(input, errorElement) {
-    errorElement.classList.add("hidden");
+      function showSuccess(input, errorElement) {
+        errorElement.classList.add("hidden");
 
-    input.classList.remove("border-[#C98C7A]", "focus:ring-[#C98C7A]", "focus:border-[#C98C7A]");
-    input.classList.add("border-[#BFD8E2]", "focus:ring-blue-500", "focus:border-blue-500");
-  }
+        input.classList.remove(
+          "border-[#C98C7A]",
+          "focus:ring-[#C98C7A]",
+          "focus:border-[#C98C7A]",
+        );
+        input.classList.add(
+          "border-[#BFD8E2]",
+          "focus:ring-blue-500",
+          "focus:border-blue-500",
+        );
+      }
 
-  function validateName() {
-    const nameValue = nameInput.value.trim();
+      function validateName() {
+        const nameValue = nameInput.value.trim();
 
-    if (nameValue === "") {
-      showError(nameInput, nameError, "Le nom est obligatoire.");
-      return false;
-    }
+        if (nameValue === "") {
+          showError(nameInput, nameError, "Le nom est obligatoire.");
+          return false;
+        }
 
-    if (nameValue.length < 2) {
-      showError(nameInput, nameError, "Le nom doit contenir au moins 2 caractères.");
-      return false;
-    }
+        if (nameValue.length < 2) {
+          showError(
+            nameInput,
+            nameError,
+            "Le nom doit contenir au moins 2 caractères.",
+          );
+          return false;
+        }
 
-    showSuccess(nameInput, nameError);
-    return true;
-  }
+        showSuccess(nameInput, nameError);
+        return true;
+      }
 
-  function validateEmail() {
-    const emailValue = emailInput.value.trim();
+      function validateEmail() {
+        const emailValue = emailInput.value.trim();
 
-    if (emailValue === "") {
-      showError(emailInput, emailError, "L’adresse email est obligatoire.");
-      return false;
-    }
+        if (emailValue === "") {
+          showError(emailInput, emailError, "L’adresse email est obligatoire.");
+          return false;
+        }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!emailRegex.test(emailValue)) {
-      showError(emailInput, emailError, "Veuillez entrer une adresse email valide.");
-      return false;
-    }
+        if (!emailRegex.test(emailValue)) {
+          showError(
+            emailInput,
+            emailError,
+            "Veuillez entrer une adresse email valide.",
+          );
+          return false;
+        }
 
-    showSuccess(emailInput, emailError);
-    return true;
-  }
+        showSuccess(emailInput, emailError);
+        return true;
+      }
 
-  function validateMessage() {
-    const messageValue = messageInput.value.trim();
-    const messageLength = messageValue.length;
+      function validateMessage() {
+        const messageValue = messageInput.value.trim();
+        const messageLength = messageValue.length;
 
-    messageCounter.innerText = messageLength + " / 20 caractères minimum";
+        messageCounter.innerText = messageLength + " / 20 caractères minimum";
 
-    if (messageValue === "") {
-      showError(messageInput, messageError, "Le message est obligatoire.");
-      return false;
-    }
+        if (messageValue === "") {
+          showError(messageInput, messageError, "Le message est obligatoire.");
+          return false;
+        }
 
-    if (messageLength < 20) {
-      showError(
-        messageInput,
-        messageError,
-        "Le message doit contenir au moins 20 caractères."
-      );
-      return false;
-    }
+        if (messageLength < 20) {
+          showError(
+            messageInput,
+            messageError,
+            "Le message doit contenir au moins 20 caractères.",
+          );
+          return false;
+        }
 
-    showSuccess(messageInput, messageError);
-    return true;
-  }
+        showSuccess(messageInput, messageError);
+        return true;
+      }
 
-  function showGlobalFeedback(type, message) {
-    formFeedback.innerText = message;
-    formFeedback.classList.remove("hidden");
+      function showGlobalFeedback(type, message) {
+        formFeedback.innerText = message;
+        formFeedback.classList.remove("hidden");
 
-    formFeedback.className = "rounded-2xl px-5 py-4 text-sm font-medium";
+        formFeedback.className = "rounded-2xl px-5 py-4 text-sm font-medium";
 
-    if (type === "success") {
-      formFeedback.classList.add("bg-[#EDF6F9]", "text-[#24576B]", "border", "border-[#BFD8E2]");
-    } else {
-      formFeedback.classList.add("bg-[#F8F6F0]", "text-[#7A5C47]", "border", "border-[#E6DED0]");
-    }
-  }
+        if (type === "success") {
+          formFeedback.classList.add(
+            "bg-[#EDF6F9]",
+            "text-[#24576B]",
+            "border",
+            "border-[#BFD8E2]",
+          );
+        } else {
+          formFeedback.classList.add(
+            "bg-[#F8F6F0]",
+            "text-[#7A5C47]",
+            "border",
+            "border-[#E6DED0]",
+          );
+        }
+      }
 
-  nameInput.addEventListener("input", validateName);
-  emailInput.addEventListener("input", validateEmail);
-  messageInput.addEventListener("input", validateMessage);
+      nameInput.addEventListener("input", validateName);
+      emailInput.addEventListener("input", validateEmail);
+      messageInput.addEventListener("input", validateMessage);
 
-  contactForm.addEventListener("submit", function (event) {
-    event.preventDefault();
+      contactForm.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-    const isNameValid = validateName();
-    const isEmailValid = validateEmail();
-    const isMessageValid = validateMessage();
+        const isNameValid = validateName();
+        const isEmailValid = validateEmail();
+        const isMessageValid = validateMessage();
 
-    if (isNameValid && isEmailValid && isMessageValid) {
-      showGlobalFeedback(
-        "success",
-        "Votre message est prêt à être envoyé. Merci pour votre contribution à CampusConnect."
-      );
+        if (isNameValid && isEmailValid && isMessageValid) {
+          showGlobalFeedback(
+            "success",
+            "Votre message est prêt à être envoyé. Merci pour votre contribution à CampusConnect.",
+          );
 
-      contactForm.reset();
-      messageCounter.innerText = "0 / 20 caractères minimum";
+          contactForm.reset();
+          messageCounter.innerText = "0 / 20 caractères minimum";
 
-      nameInput.classList.remove("border-[#BFD8E2]");
-      emailInput.classList.remove("border-[#BFD8E2]");
-      messageInput.classList.remove("border-[#BFD8E2]");
-    } else {
-      showGlobalFeedback(
-        "error",
-        "Veuillez corriger les champs signalés avant d’envoyer le formulaire."
-      );
-    }
-  });
-</script>
+          nameInput.classList.remove("border-[#BFD8E2]");
+          emailInput.classList.remove("border-[#BFD8E2]");
+          messageInput.classList.remove("border-[#BFD8E2]");
+        } else {
+          showGlobalFeedback(
+            "error",
+            "Veuillez corriger les champs signalés avant d’envoyer le formulaire.",
+          );
+        }
+      });
+    </script>
+    <script>
+      const quizQuestions = [
+        {
+          question: "Quel est l’objectif principal de CampusConnect ?",
+          answers: [
+            "Créer un réseau social de divertissement",
+            "Centraliser les informations importantes de la vie étudiante",
+            "Remplacer tous les enseignants",
+            "Vendre des produits aux étudiants",
+          ],
+          correctAnswer: 1,
+        },
+        {
+          question: "Quel type de contenu peut être publié sur CampusConnect ?",
+          answers: [
+            "Uniquement des photos personnelles",
+            "Des annonces, ressources, événements et opportunités",
+            "Seulement des messages privés",
+            "Uniquement des publicités",
+          ],
+          correctAnswer: 1,
+        },
+        {
+          question:
+            "Pourquoi une plateforme comme CampusConnect peut être utile ?",
+          answers: [
+            "Elle permet de disperser davantage les informations",
+            "Elle évite aux étudiants d’utiliser internet",
+            "Elle réduit la confusion causée par les informations éparpillées",
+            "Elle supprime le besoin de communiquer",
+          ],
+          correctAnswer: 2,
+        },
+        {
+          question:
+            "Quelle fonctionnalité peut aider les étudiants à ne pas rater une information importante ?",
+          answers: [
+            "Les notifications",
+            "Le changement de couleur du logo",
+            "Les images décoratives uniquement",
+            "Un menu sans lien",
+          ],
+          correctAnswer: 0,
+        },
+        {
+          question: "Quel élément rend une interface étudiante plus efficace ?",
+          answers: [
+            "Un design très compliqué",
+            "Des informations cachées",
+            "Une navigation claire et responsive",
+            "Des textes difficiles à lire",
+          ],
+          correctAnswer: 2,
+        },
+      ];
+
+      const quizBox = document.getElementById("quizBox");
+      const resultBox = document.getElementById("resultBox");
+
+      const questionCounter = document.getElementById("questionCounter");
+      const timerText = document.getElementById("timerText");
+      const timerBar = document.getElementById("timerBar");
+
+      const questionText = document.getElementById("questionText");
+      const answerList = document.getElementById("answerList");
+      const quizError = document.getElementById("quizError");
+
+      const nextQuestionButton = document.getElementById("nextQuestionButton");
+      const restartQuizButton = document.getElementById("restartQuizButton");
+
+      const scoreTitle = document.getElementById("scoreTitle");
+      const scoreMessage = document.getElementById("scoreMessage");
+      const scoreDetails = document.getElementById("scoreDetails");
+
+      let currentQuestionIndex = 0;
+      let selectedAnswerIndex = null;
+      let score = 0;
+
+      let timeLeft = 15;
+      let timerInterval;
+
+      function startTimer() {
+        clearInterval(timerInterval);
+
+        timeLeft = 15;
+        timerText.innerText = "Temps restant : " + timeLeft + "s";
+        timerBar.style.width = "100%";
+
+        timerInterval = setInterval(function () {
+          timeLeft--;
+
+          timerText.innerText = "Temps restant : " + timeLeft + "s";
+          timerBar.style.width = (timeLeft / 15) * 100 + "%";
+
+          if (timeLeft <= 5) {
+            timerBar.className =
+              "h-3 bg-[#DED0B8] rounded-full transition-all duration-1000";
+          } else {
+            timerBar.className =
+              "h-3 bg-[#BFD8E2] rounded-full transition-all duration-1000";
+          }
+
+          if (timeLeft === 0) {
+            clearInterval(timerInterval);
+            goToNextQuestion();
+          }
+        }, 1000);
+      }
+
+      function showQuestion() {
+        const currentQuestion = quizQuestions[currentQuestionIndex];
+
+        selectedAnswerIndex = null;
+        quizError.classList.add("hidden");
+
+        questionCounter.innerText =
+          "Question " +
+          (currentQuestionIndex + 1) +
+          " / " +
+          quizQuestions.length;
+
+        questionText.innerText = currentQuestion.question;
+
+        answerList.innerHTML = "";
+
+        currentQuestion.answers.forEach(function (answer, index) {
+          const button = document.createElement("button");
+
+          button.type = "button";
+          button.innerText = answer;
+
+          button.className =
+            "text-left bg-[#F8F6F0] hover:bg-[#EDF6F9] border border-[#E6DED0] hover:border-[#BFD8E2] text-slate-800 px-5 py-4 rounded-2xl font-medium transition duration-300";
+
+          button.addEventListener("click", function () {
+            selectedAnswerIndex = index;
+
+            const answerButtons = answerList.querySelectorAll("button");
+
+            answerButtons.forEach(function (btn) {
+              btn.className =
+                "text-left bg-[#F8F6F0] hover:bg-[#EDF6F9] border border-[#E6DED0] hover:border-[#BFD8E2] text-slate-800 px-5 py-4 rounded-2xl font-medium transition duration-300";
+            });
+
+            button.className =
+              "text-left bg-[#EDF6F9] border border-[#BFD8E2] text-[#24576B] px-5 py-4 rounded-2xl font-semibold transition duration-300";
+          });
+
+          answerList.appendChild(button);
+        });
+
+        startTimer();
+      }
+
+      function goToNextQuestion() {
+        const currentQuestion = quizQuestions[currentQuestionIndex];
+
+        if (selectedAnswerIndex === null && timeLeft > 0) {
+          quizError.classList.remove("hidden");
+          return;
+        }
+
+        clearInterval(timerInterval);
+
+        if (selectedAnswerIndex === currentQuestion.correctAnswer) {
+          score++;
+        }
+
+        currentQuestionIndex++;
+
+        if (currentQuestionIndex < quizQuestions.length) {
+          showQuestion();
+        } else {
+          showResult();
+        }
+      }
+
+      function showResult() {
+        quizBox.classList.add("hidden");
+        resultBox.classList.remove("hidden");
+
+        scoreDetails.innerText =
+          "Tu as obtenu " + score + " / " + quizQuestions.length + ".";
+
+        if (score <= 2) {
+          scoreTitle.innerText = "À revoir";
+          scoreMessage.innerText =
+            "Tu as compris quelques éléments, mais il faut encore revoir l’objectif de CampusConnect et ses fonctionnalités principales.";
+        } else if (score <= 4) {
+          scoreTitle.innerText = "Bon niveau";
+          scoreMessage.innerText =
+            "Tu as une bonne compréhension du projet. Quelques détails peuvent encore être renforcés.";
+        } else {
+          scoreTitle.innerText = "Très bonne maîtrise";
+          scoreMessage.innerText =
+            "Tu as bien compris l’utilité de CampusConnect et la logique d’une plateforme d’information pour la vie étudiante.";
+        }
+      }
+
+      function restartQuiz() {
+        currentQuestionIndex = 0;
+        selectedAnswerIndex = null;
+        score = 0;
+
+        resultBox.classList.add("hidden");
+        quizBox.classList.remove("hidden");
+
+        showQuestion();
+      }
+
+      nextQuestionButton.addEventListener("click", goToNextQuestion);
+      restartQuizButton.addEventListener("click", restartQuiz);
+
+      showQuestion();
+    </script>
   </body>
 </html>

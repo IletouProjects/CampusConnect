@@ -57,7 +57,18 @@ Les notions travaillées incluent :
 ## Auteur
 
 Projet réalisé par **Ilétou** dans le cadre du challenge de **Les Pros de la Tech**.
+##  Voir le projet en ligne
 
+Le site est visible ici : [campus-connect-tau-blue.vercel.app](https://campus-connect-tau-blue.vercel.app)
+
+##  Installation locale
+
+Pour tester le projet sur ta machine :
+
+git clone https://github.com/IletouProjects/CampusConnect.git
+cd CampusConnect
+
+Puis ouvre le fichier index.html dans ton navigateur.
 ## Déploiement
 
 Le projet peut être publié avec GitHub Pages et/ou vercel directement depuis le dépôt GitHub.

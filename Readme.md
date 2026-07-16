@@ -73,4 +73,4 @@ Avant d’installer ou de lancer le projet, assurez-vous d’avoir :
 Pour récupérer le projet sur votre ordinateur, ouvrez un terminal puis exécutez la commande suivante :
 
 ```bash
-git clone https://github.com/IletouProjects/CampusConnect.git
+git clone https://github.com/IletouProjects/CampusConnect.git 
